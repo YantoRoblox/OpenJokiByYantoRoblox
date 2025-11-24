@@ -9,7 +9,7 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            /* TEMA LAUT: Gradien biru tua ke biru kehijauan */
+            /**/
             background: linear-gradient(45deg, #001f3f, #0074d9, #41a7d8, #00b894);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite; /* Animasi lebih santai */
@@ -194,7 +194,7 @@
             color: #ff6b6b;
         }
         
-        /* Animasi Gelembung (Menggunakan .particles) */
+        /**/
         .particles {
             position: fixed;
             top: 0;
@@ -208,10 +208,10 @@
             position: absolute;
             width: 4px;
             height: 4px;
-            background: #4ecdc4; /* Warna gelembung */
+            background: #4ecdc4; /**/
             border-radius: 50%;
             opacity: 0.5;
-            animation: float 15s linear infinite; /* Gerakan naik seperti gelembung */
+            animation: float 15s linear infinite; /**/
         }
         @keyframes float {
             0% { transform: translateY(100vh); opacity: 0; }
@@ -219,7 +219,7 @@
             100% { transform: translateY(-100vh); opacity: 0; }
         }
 
-        /* Animasi Ikan */
+        /**/
         .fish-container {
             position: fixed;
             top: 0;
@@ -227,11 +227,11 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 2; /* Di atas gelembung, di bawah konten */
+            z-index: 2; /**/
         }
         .single-fish {
             position: absolute;
-            font-size: 30px; /* Ukuran emoji ikan */
+            font-size: 30px; /**/
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
             animation: swim 20s linear infinite;
             will-change: transform;
@@ -248,7 +248,7 @@
     </style>
 </head>
 <body>
-    <!-- Gelembung Air -->
+    <>
     <div class="particles">
         <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
         <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
@@ -261,7 +261,7 @@
         <div class="particle" style="left: 90%; animation-delay: 8s;"></div>
     </div>
 
-    <!-- Ikan Berenang -->
+    <>
     <div class="fish-container">
         <div class="single-fish" style="top: 15%; animation-duration: 25s; animation-delay: 0s;">🐟</div>
         <div class="single-fish" style="top: 40%; animation-duration: 18s; animation-delay: 5s; animation-name: swim-slow;">🐟</div>
