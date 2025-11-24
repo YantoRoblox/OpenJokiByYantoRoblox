@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YantoRoblox - Jasa Script Roblox Fish It</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            /* TEMA LAUT: Gradien biru tua ke biru kehijauan */
+            background: linear-gradient(45deg, #001f3f, #0074d9, #41a7d8, #00b894);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite; /* Animasi lebih santai */
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.7); /* Sedikit transparan */
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+            position: relative;
+            z-index: 10;
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(0, 255, 136, 0.5); }
+            to { box-shadow: 0 0 30px rgba(0, 255, 136, 1); }
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+            animation: spin 5s linear infinite;
+            position: relative;
+            z-index: 11;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #00ff88;
+            text-shadow: 0 0 10px #00ff88;
+            animation: textGlow 1.5s ease-in-out infinite alternate;
+        }
+        @keyframes textGlow {
+            from { text-shadow: 0 0 10px #00ff88; }
+            to { text-shadow: 0 0 20px #00ff88, 0 0 30px #00ff88; }
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            color: #00ff88;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        nav a:hover {
+            color: #ff6b6b;
+            transform: scale(1.1);
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #ff6b6b;
+            transition: all 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.15); /* Lebih solid sedikit */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 255, 136, 0.3);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-in;
+            position: relative;
+            z-index: 5;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h2 {
+            color: #00ff88;
+            text-shadow: 0 0 10px #00ff88;
+            margin-bottom: 30px; 
+        }
+        h4 {
+            color: #4ecdc4;
+            margin-top: 20px;
+            margin-bottom: 5px;
+            text-shadow: 0 0 5px #4ecdc4;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .button {
+            display: inline-block;
+            background: linear-gradient(45deg, #00ff88, #4ecdc4);
+            color: #1e3c72;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+        .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 1);
+        }
+        .script-list {
+            text-align: left;
+            margin: 20px 0;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 5px;
+            border: 1px solid rgba(0, 255, 136, 0.5);
+            transition: all 0.3s ease;
+        }
+        .script-list:hover {
+            background: rgba(0, 0, 0, 0.6);
+            border-color: #00ff88;
+        }
+        .script-list h3 {
+            color: #00ff88;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #00ff88;
+        }
+        .script-list table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .script-list th, .script-list td {
+            border: 1px solid rgba(0, 255, 136, 0.5);
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+        .script-list th {
+            background-color: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        .script-list td {
+            font-size: 16px;
+        }
+        .status-success {
+            color: #00ff88;
+        }
+        .status-error {
+            color: #ff4444;
+        }
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin-top: 50px;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        }
+        footer a {
+            color: #00ff88;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #ff6b6b;
+        }
+        
+        /* Animasi Gelembung (Menggunakan .particles) */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #4ecdc4; /* Warna gelembung */
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 15s linear infinite; /* Gerakan naik seperti gelembung */
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 0; }
+            50% { opacity: 0.7; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+
+        /* Animasi Ikan */
+        .fish-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2; /* Di atas gelembung, di bawah konten */
+        }
+        .single-fish {
+            position: absolute;
+            font-size: 30px; /* Ukuran emoji ikan */
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            animation: swim 20s linear infinite;
+            will-change: transform;
+        }
+        @keyframes swim {
+            0% { left: -10%; top: 20%; transform: scaleX(1); } /* Muncul dari kiri, hadap kanan */
+            45% { transform: scaleX(1); }
+            50% { left: 110%; top: 75%; transform: scaleX(1); }
+            50.01% { left: 110%; top: 75%; transform: scaleX(-1); /* Balik arah, hadap kiri */ }
+            95% { transform: scaleX(-1); }
+            100% { left: -10%; top: 20%; transform: scaleX(-1); } /* Hilang di kiri */
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Gelembung Air -->
+    <div class="particles">
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 6s;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 7s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 8s;"></div>
+    </div>
+
+    <!-- Ikan Berenang -->
+    <div class="fish-container">
+        <div class="single-fish" style="top: 15%; animation-duration: 25s; animation-delay: 0s;">🐟</div>
+        <div class="single-fish" style="top: 40%; animation-duration: 18s; animation-delay: 5s; animation-name: swim-slow;">🐟</div>
+        <div class="single-fish" style="top: 65%; animation-duration: 30s; animation-delay: 10s;">🐠</div>
+        <div class="single-fish" style="top: 80%; animation-duration: 15s; animation-delay: 15s; font-size: 20px;">🐡</div>
+        <div class="single-fish" style="top: 50%; animation-duration: 22s; animation-delay: 8s; font-size: 35px;">🦈</div>
+    </div>
+
+    <header>
+        <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#00ff88;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#4ecdc4;stop-opacity:1" />
+                </linearGradient>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                    <feMerge> 
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            <circle cx="50" cy="50" r="45" fill="url(#grad1)" stroke="#00ff88" stroke-width="2" filter="url(#glow)"/>
+            <text x="50" y="58" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e3c72" filter="url(#glow)">YR</text>
+        </svg>
+        <h1>YantoRoblox</h1>
+    </header>
+    <nav>
+        <a href="#services">Layanan</a>
+        <a href="#discord">Discord</a>
+    </nav>
+    <div class="container" id="services">
+        <h2>OPEN JOKI FISH IT AMAN DAN TERPERCAYA <br> BY YANTOROBLOX</h2>
+        
+        <div class="script-list">
+            <h3>🎣 LIST JASA JOKI FISH IT & HARGA</h3>
+            
+            <h4>💎 JOKI FARM BATU (STONE)</h4>
+            <table>
+                <thead>
+                    <tr><th>Jumlah</th><th>Harga</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>7 Batu</td><td>1k</td></tr>
+                    <tr><td>14 Batu</td><td>2k</td></tr>
+                    <tr><td>21 Batu</td><td>3k</td></tr>
+                    <tr><td>28 Batu</td><td>4k</td></tr>
+                    <tr><td>35 Batu</td><td>5k</td></tr>
+                </tbody>
+            </table>
+
+            <h4>🎣 JOKI ROD (Sampai Dapat)</h4>
+            <table>
+                <thead>
+                    <tr><th>Rod</th><th>Harga</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Astral Rod</td><td>10k</td></tr>
+                    <tr><td>Hazmat Rod</td><td>15k</td></tr>
+                    <tr><td>Ares Rod</td><td>30k</td></tr>
+                    <tr><td>Angler Rod</td><td>45k</td></tr>
+                    <tr><td>Ghostfin Rod (sampai dapat)</td><td>65k</td></tr>
+                    <tr><td>Element Rod (punya Ghostfin)</td><td>110k</td></tr>
+                    <tr><td>Bamboo Rod</td><td>73k</td></tr>
+                </tbody>
+            </table>
+            
+        </div>
+        <div class="script-list">
+            <h3>⌛ HARGA PAKET JOKI AFK ⌛</h3>
+
+            <h4>Paket Harian (Days)</h4>
+            <table>
+                <thead>
+                    <tr><th>Durasi</th><th>Harga</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1 Hari</td><td>10k</td></tr>
+                    <tr><td>2 Hari</td><td>15k</td></tr>
+                    <tr><td>3 Hari</td><td>20k</td></tr>
+                    <tr><td>4 Hari</td><td>25k</td></tr>
+                    <tr><td>5 Hari</td><td>30k</td></tr>
+                    <tr><td>7 Hari</td><td>40k</td></tr>
+                </tbody>
+            </table>
+
+            <h4>Paket Jam (Hours)</h4>
+            <table>
+                <thead>
+                    <tr><th>Durasi</th><th>Harga</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1 Jam</td><td>1k</td></tr>
+                    <tr><td>3 Jam</td><td>2k</td></tr>
+                    <tr><td>6 Jam</td><td>4k</td></tr>
+                    <tr><td>8 Jam</td><td>6k</td></tr>
+                    <tr><td>12 Jam</td><td>8k</td></tr>
+                </tbody>
+            </table>
+            <p>Pengerjaan: Semisal Dapat Secret Saat AFK Itu Hak User. Item Di Tas Juga Tidak Di Buka. <span class="status-success">✅</span></p>
+        </div>
+        <a href="https://discord.gg/Tg5DkGvRWj" class="button" target="_blank">Join Discord Kami</a>
+    </div>
+    <footer id="discord">
+        <p>Join Discord kita: <a href="https://discord.gg/Tg5DkGvRWj" target="_blank">https://discord.gg/Tg5DkGvRWj</a></p>
+        <p>&copy; 2025 YantoRoblox.</p>
+    </footer>
+</body>
+</html>
